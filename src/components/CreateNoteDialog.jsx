@@ -25,14 +25,13 @@ const CreateNoteDialog = ({ open, close }) => {
 
   const addNoteHandle = async () => {
     setLoading(true)
-    setDisabled(false)
+    setDisabled(true)
     await addDoc(collection(db, user.email), {
       title: title.value,
       body: body.value,
       createdAt: Timestamp.fromDate(new Date()),
     })
     setLoading(false)
-    setDisabled(true)
     close()
     title.clear()
     body.clear()
