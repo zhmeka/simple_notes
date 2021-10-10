@@ -3,6 +3,7 @@ import {
   Avatar,
   Container,
   IconButton,
+  LinearProgress,
   ListItemIcon,
   Menu,
   MenuItem,
@@ -14,10 +15,10 @@ import { useState } from "react"
 import useAuth from "../hooks/useAuth"
 import { LogOutIcon } from "./Icons"
 
-const Header = () => {
+const Header = ({ loading }) => {
   const { user, logOut } = useAuth()
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, position: "relative" }}>
       <AppBar position="static">
         <Container disableGutters>
           <Toolbar>
@@ -28,6 +29,11 @@ const Header = () => {
           </Toolbar>
         </Container>
       </AppBar>
+      {loading && (
+        <LinearProgress
+          sx={{ position: "absolute", top: "100%", left: 0, width: "100%" }}
+        />
+      )}
     </Box>
   )
 }

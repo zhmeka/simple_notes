@@ -6,10 +6,11 @@ import { db } from "../firebase"
 import useAuth from "../hooks/useAuth"
 import Note from "./Note"
 
-const NotesWrapper = () => {
+const NotesWrapper = ({ setLoading }) => {
   const [notes, setNotes] = useState([])
   const { user } = useAuth()
   useEffect(() => {
+    setLoading(true)
     const q = query(collection(db, user.email))
     const unsubscribe = onSnapshot(q, (snapshot) => {
       let newNotesArray = []
@@ -17,6 +18,7 @@ const NotesWrapper = () => {
         newNotesArray.push({ ...doc.data(), id: doc.id })
       })
       setNotes(newNotesArray)
+      setLoading(false)
     })
     return unsubscribe
   }, [])
