@@ -45,9 +45,13 @@ const Note = ({ data }) => {
   }
 
   return (
-    <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+    <Grid item xs={12} sm={6} md={4} lg={3}>
       <ClickAwayListener onClickAway={() => setEditing(false)}>
-        <Card sx={{ position: "relative" }} onClick={() => setEditing(true)}>
+        <Card
+          elevation={editing ? 5 : 1}
+          sx={{ position: "relative" }}
+          onClick={() => setEditing(true)}
+        >
           {loading && (
             <LinearProgress
               sx={{ position: "absolute", left: "0", width: "100%" }}

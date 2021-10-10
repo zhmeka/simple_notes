@@ -1,3 +1,4 @@
+import { Container } from "@material-ui/core"
 import CreateNote from "./components/CreateNote"
 import Header from "./components/Header"
 import Login from "./components/Login"
@@ -10,16 +11,18 @@ const App = () => {
   return (
     <>
       <Header />
-      {user ? (
-        <Page route="notes">
-          <CreateNote />
-          <NotesWrapper />
-        </Page>
-      ) : (
-        <Page route="login">
-          <Login />
-        </Page>
-      )}
+      <Container>
+        {user ? (
+          <Page route="notes">
+            <CreateNote />
+            <NotesWrapper />
+          </Page>
+        ) : (
+          <Page route="login">
+            <Login />
+          </Page>
+        )}
+      </Container>
     </>
   )
 }

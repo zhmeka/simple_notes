@@ -8,7 +8,6 @@ import Note from "./Note"
 
 const NotesWrapper = () => {
   const [notes, setNotes] = useState([])
-  console.log("нотатки епта")
   const { user } = useAuth()
   useEffect(() => {
     const q = query(collection(db, user.email))
@@ -22,12 +21,10 @@ const NotesWrapper = () => {
     return unsubscribe
   }, [])
   return (
-    <Box sx={{ p: 2 }}>
-      <Grid container spacing={2}>
-        {notes.length > 0 &&
-          notes.map((data) => <Note data={data} key={data.id} />)}
-      </Grid>
-    </Box>
+    <Grid container spacing={2}>
+      {notes.length > 0 &&
+        notes.map((data) => <Note data={data} key={data.id} />)}
+    </Grid>
   )
 }
 

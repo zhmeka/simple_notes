@@ -1,6 +1,7 @@
 import {
   AppBar,
   Avatar,
+  Container,
   IconButton,
   ListItemIcon,
   Menu,
@@ -18,12 +19,14 @@ const Header = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
-          <Typography sx={{ flexGrow: 1 }} variant="h6" component="div">
-            Simple Notes
-          </Typography>
-          {user && <UserCircle logOut={logOut} photoURL={user.photoURL} />}
-        </Toolbar>
+        <Container disableGutters>
+          <Toolbar>
+            <Typography sx={{ flexGrow: 1 }} variant="h6" component="div">
+              Simple Notes
+            </Typography>
+            {user && <UserCircle logOut={logOut} photoURL={user.photoURL} />}
+          </Toolbar>
+        </Container>
       </AppBar>
     </Box>
   )
